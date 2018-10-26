@@ -52,6 +52,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         Bundle extras = new Bundle();
         extras.putParcelable("Bitmap", bitmap);
         intent.putExtras(extras);
+        llllll
 
 
 
