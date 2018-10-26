@@ -2,6 +2,7 @@ package com.example.ruben.homework2;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.net.URI;
 
 
 public class UserDemo extends AppCompatActivity implements View.OnClickListener {
@@ -28,15 +31,18 @@ public class UserDemo extends AppCompatActivity implements View.OnClickListener 
         newUser = findViewById(R.id.newUserId);
         userInfo= findViewById(R.id.userTextId);
 
-        Bundle extras = getIntent().getExtras();
-        Bitmap bitmap = (Bitmap) extras.getParcelable("Bitmap");
-        imageView.setImageBitmap(bitmap);
+//        Bundle extras = getIntent().getExtras();
+//        Bitmap bitmap = (Bitmap) extras.getParcelable("Bitmap");
+//        imageView.setImageBitmap(bitmap);
 
 
 
         Intent intent2 = getIntent();
         String message = intent2.getStringExtra("INFO");
         userInfo.setText(message);
+
+        String photo = intent2.getStringExtra("uri");
+        imageView.setImageURI(Uri.parse(photo));
 
         newUser.setOnClickListener(this);
 

@@ -23,6 +23,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     private Button buttonSave;
     private Button addButton;
     private ImageView imageView;
+    private String imageUri;
 
 
       private static  final int RESULT_LOAD_IMAGE = 1;
@@ -52,7 +53,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         Bundle extras = new Bundle();
         extras.putParcelable("Bitmap", bitmap);
         intent.putExtras(extras);
-        pppp
+
 
 
 
@@ -63,9 +64,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.saveId:
+                imageUri= imageView.getTag().toString();
                 Intent intent = new Intent(this, UserDemo.class);
                 String info = firstName.getText().toString()+" "+lastName.getText().toString();
                 intent.putExtra("INFO", info);
+                intent.putExtra("uri", imageUri);
                 startActivity(intent);
                 break;
             case R.id.addPhotoId:
@@ -86,7 +89,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         if(requestCode==RESULT_LOAD_IMAGE && resultCode==RESULT_OK && data!=null){
             Uri selectedImage = data.getData();
             imageView.setImageURI(selectedImage);
+            imageView.setTag(selectedImage);
 
         }
     }
+
 }
